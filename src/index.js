@@ -17,5 +17,11 @@ app.post("/user", (req, res) => {
   res.status(200).json(newUser);
 });
 app.get(`/user/:id`, (req, res) => {
-  res.send(users.find((user) => (user.id === +req.params.id)));
+  res.send(users.find((user) => user.id === +req.params.id));
+});
+app.delete("/user/:id", (req, res) => {
+  if (!users[+req.params.id]) {
+    res.status(204);
+  }
+  res.send(users.splice(+req.params.id, 1));
 });
