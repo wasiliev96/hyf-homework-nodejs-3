@@ -7,10 +7,15 @@ app.listen(3000, () => {
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-const users = [{ id: 0 }];
-app.get("users", (req, res) => {
+const users = [];
+app.get("/users", (req, res) => {
   res.json(users);
 });
-app.get(`users/:id`, (req, res) => {
-  res.json(users.find((user) => (user.id = req.params.id)));
+app.post("/user", (req, res) => {
+  const newUser = { id: users.length };
+  users.push(newUser);
+  res.status(200).json(newUser);
+});
+app.get(`/user/:id`, (req, res) => {
+  res.send(users.find((user) => (user.id === +req.params.id)));
 });
