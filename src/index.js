@@ -8,9 +8,9 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 const users = [{ id: 0 }];
-app.get("users", (req, res) => {
+app.get("/users", (req, res) => {
   res.json(users);
 });
-app.get(`user/:id`, (req, res) => {
+app.get(`/user/:id`, (req, res) => {
   res.json(users.find((user) => (user.id = req.params.id)));
 });
