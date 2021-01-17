@@ -11,6 +11,6 @@ const users = [{ id: 0 }];
 app.get("users", (req, res) => {
   res.json(users);
 });
-app.get(`users/:id`, (req, res) => {
+app.get(`user/:id`, (req, res) => {
   res.json(users.find((user) => (user.id = req.params.id)));
 });
