@@ -23,5 +23,7 @@ app.delete("/user/:id", (req, res) => {
   if (!users[+req.params.id]) {
     res.status(204);
   }
-  res.send(users.splice(+req.params.id, 1));
+  else{
+    res.status(202).send(users.splice(+req.params.id, 1));
+  }
 });
